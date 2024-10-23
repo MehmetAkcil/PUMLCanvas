@@ -2,18 +2,14 @@ import {useState, useEffect} from 'react';
 import plantumlEncoder from 'plantuml-encoder';
 import LeftCard from "./components/LeftCard.jsx";
 import RightCard from "./components/RightCard";
+import {usePumlStore} from "./stores/usePumCode.js";
 
 const PlantUMLEditor = () => {
     const [previewUrl, setPreviewUrl] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const [pumlCode, setPumlCode] = useState(
-        `
-        @startuml
-            Bob -> Alice : hello
-        @enduml`
-    );
+    const {pumlCode, setPumlCode} = usePumlStore();
 
     const encodePlantUML = (text) => {
         try {
