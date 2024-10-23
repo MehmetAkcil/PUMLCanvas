@@ -1,4 +1,7 @@
 import {RotateCcw, ZoomIn, ZoomOut} from "lucide-react";
+import {usePumlStore} from "../../stores/usePumCode.js";
+import {Button} from "@/components/ui/button";
+import {FileDown} from "lucide-react";
 
 
 // eslint-disable-next-line react/prop-types
@@ -19,8 +22,21 @@ const Buttons = ({setZoom, setPosition, MIN_ZOOM, MAX_ZOOM, zoom}) => {
         setPosition({x: 0, y: 0});
     };
 
+    const { pumlCode } = usePumlStore();
+
+    const handleDownload = () => {
+        const element = document.createElement('a');
+        const file = new Blob([pumlCode], { type: 'text/plain' });
+        element.href = URL.createObjectURL(file);
+        const randomValue = Math.random().toString(8).substring(2, 10);
+        element.download = `puml-canvas-${randomValue}.puml`;
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+    };
+
     return (
-        <div className="flex items-center gap-2 mb-2">
+        <div className="flex items-center mb-1">
             <button
                 onClick={handleZoomOut}
                 className="p-2 rounded hover:bg-gray-100"
@@ -45,6 +61,10 @@ const Buttons = ({setZoom, setPosition, MIN_ZOOM, MAX_ZOOM, zoom}) => {
             <span className="text-sm text-gray-500">
                                 {Math.round(zoom * 100)}%
                             </span>
+            <Button onClick={handleDownload} className="ms-auto" size="sm">
+                <FileDown />
+                Download
+            </Button>
         </div>
     )
 }
