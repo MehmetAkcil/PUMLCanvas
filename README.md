@@ -1,6 +1,10 @@
+![Image](https://i.hizliresim.com/pkqytax.png)
 # PlantUML Editor
 
-Bu proje, **React** ve **Monaco Editor** kullanılarak geliştirilmiş bir PlantUML düzenleyicisidir. Kullanıcılar PlantUML kodlarını yazabilir, önizlemesini görebilir ve düzenleme sırasında yakınlaştırma, uzaklaştırma ve sürükleme özelliklerini kullanabilirler.
+Bu proje, **React** ve **Monaco Editor** paketleri kullanılarak geliştirilmiş bir PlantUML düzenleyicisidir. Kullanıcılar PlantUML kodlarını yazabilir, önizlemesini görebilir ve düzenleme sırasında yakınlaştırma, uzaklaştırma ve sürükleme, düzenleme işlemleri bitince indirme özelliğini kullanabilirler. Mobil cihazında kullanmak üzere PWA özelliği ile indirilebilir.
+
+## Demo Site
+[PlantUML Editor Demo-MehmetAkcil](https://puml-canvas.mehmetakcil.com.tr)
 
 ## Özellikler
 
@@ -8,6 +12,8 @@ Bu proje, **React** ve **Monaco Editor** kullanılarak geliştirilmiş bir Plant
 - **PlantUML Önizlemesi**: PlantUML kodunun SVG formatında canlı olarak önizlemesi.
 - **Yakınlaştırma / Uzaklaştırma**: Fare tekerleği veya butonlar aracılığıyla önizleme üzerinde yakınlaştırma ve uzaklaştırma yapabilme.
 - **Sürükle ve Bırak**: Önizleme alanını sürükleyerek konumunu ayarlayabilme.
+- **İndirme**: Düzenleme işlemi bittikten sonra dosya olarak indirebilme.
+- **PWA Desteği**: Mobil cihazında kullanmak istediğinde uygulama olarak indirip kullanabilme.
 - **Hata Yönetimi**: Kodun işlenmesi veya önizlemenin yüklenmesi sırasında oluşabilecek hatalar için kullanıcıya bilgi verme.
 
 ## Kullanılan Teknolojiler
@@ -44,6 +50,8 @@ Bu projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izley
 - Kod yazarken otomatik olarak önizleme alanında SVG görüntüsü oluşacaktır.
 - **Zoom In** ve **Zoom Out** butonlarını kullanarak görüntüyü yakınlaştırıp uzaklaştırabilirsiniz.
 - Görüntüyü sürükleyerek istediğiniz konuma taşıyabilirsiniz.
+- Kodunuz tamamlandığında **Download** butonundan indirebilirsiniz.
+- Mobil cihazınıza indirip kullanmak istediğinde uygulama olarak kullanabilirsiniz
 
 ## Bilinen Problemler
 
@@ -68,6 +76,18 @@ Eğer projeyi geliştirmek veya katkıda bulunmak isterseniz:
     git push origin feature/ozellik-adi
     ```
 5. Bir pull request açın.
+
+
+## Katkıda Bulunma
+
+Eğer bu projeye katkıda bulunmak isterseniz, aşağıdaki adımları takip edebilirsiniz:
+
+-   Bu depoyu fork edin.
+-   Yeni özellikler eklemek veya hata düzeltmeleri yapmak için bir dal (branch) oluşturun.
+-   Yaptığınız değişiklikleri bu dalda yapın.
+-   Değişikliklerinizi commit edin ve bir pull request oluşturun.
+
+
 
 ## Lisans
 
