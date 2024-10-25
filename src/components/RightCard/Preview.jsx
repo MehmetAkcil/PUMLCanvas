@@ -69,12 +69,12 @@ const Preview = ({setPosition, zoom, MIN_ZOOM, MAX_ZOOM, position, setZoom, prev
     return (
         <div
             ref={previewContainerRef}
-            className="w-full flex-1 bg-white border rounded overflow-hidden relative"
+            className="w-full flex-1 overflow-hidden relative"
             onWheel={handleWheel}
             onMouseDown={handleMouseDown}
             style={{cursor: isDragging ? 'grabbing' : 'grab'}}
         >
-            <div className="h-[80vh] w-full relative overflow-hidden">
+            <div className="h-full w-full relative overflow-hidden">
                 {previewUrl ? (
                     <div
                         className="absolute"

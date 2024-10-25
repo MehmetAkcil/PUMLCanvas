@@ -22,6 +22,21 @@ export const usePumlStore = create(
                     return { pumlCode: newCode };
                 });
             },
+            updatePumlCodeById: (id, newCode) => {
+                set(() => {
+                    if (typeof window !== 'undefined') {
+                        localStorage.setItem(`pumlCode_${id}`, newCode);
+                    }
+                    return { pumlCode: newCode };
+                });
+            },
+            getPumlCodeById: (id) => {
+                if (typeof window !== 'undefined') {
+                    const storedCode = localStorage.getItem(`pumlCode_${id}`);
+                    return storedCode ? storedCode : `@startuml\n    Bob -> Alice : hello\n@enduml`;
+                }
+                return `@startuml\n    Bob -> Alice : hello\n@enduml`;
+            },
         }),
         {
             name: 'puml-storage',

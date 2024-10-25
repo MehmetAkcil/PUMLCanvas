@@ -1,5 +1,4 @@
 import Editor from "@monaco-editor/react";
-import {Card} from "@/components/ui/card";
 
 
 // eslint-disable-next-line react/prop-types
@@ -19,9 +18,9 @@ const LeftCard = ({ setPumlCode, pumlCode }) => {
 
 
     return (
-        <Card className="w-1/4 overflow-hidden">
+        <div className="overflow-hidden bg-white">
             <Editor
-                height="90vh"
+                height="95vh"
                 defaultLanguage="plantuml"
                 value={pumlCode}
                 onChange={(value) => setPumlCode(value)}
@@ -44,7 +43,7 @@ const LeftCard = ({ setPumlCode, pumlCode }) => {
                     });
                 }}
             />
-        </Card>
+        </div>
     );
 }
 

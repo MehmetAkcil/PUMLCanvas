@@ -1,15 +1,18 @@
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import plantumlEncoder from 'plantuml-encoder';
 import LeftCard from "./components/LeftCard.jsx";
 import RightCard from "./components/RightCard";
-import {usePumlStore} from "./stores/usePumCode.js";
+import { usePumlStore } from "./stores/usePumlCode";
+import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
+import { Undo2 } from "lucide-react";
 
-const PlantUMLEditor = () => {
+// eslint-disable-next-line react/prop-types
+const PlantUMLEditor = ({ projectId, onClose }) => {
     const [previewUrl, setPreviewUrl] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
 
-    const {pumlCode, setPumlCode} = usePumlStore();
+    const { pumlCode, setPumlCode, updatePumlCodeById, getPumlCodeById } = usePumlStore();
 
     const encodePlantUML = (text) => {
         try {
@@ -43,12 +46,16 @@ const PlantUMLEditor = () => {
         } finally {
             setIsLoading(false);
         }
-    }, 1000);
+    }, 500);
+
+    useEffect(() => {
+        const code = getPumlCodeById(projectId);
+        setPumlCode(code);
+    }, [projectId, getPumlCodeById, setPumlCode]);
 
     useEffect(() => {
         updatePreview(pumlCode);
     }, [pumlCode]);
-
 
     useEffect(() => {
         const handleWheelZoom = (e) => {
@@ -57,24 +64,38 @@ const PlantUMLEditor = () => {
             }
         };
 
-        window.addEventListener('wheel', handleWheelZoom, {passive: false});
+        window.addEventListener('wheel', handleWheelZoom, { passive: false });
         return () => {
             window.removeEventListener('wheel', handleWheelZoom);
         };
     }, []);
 
+    const handlePumlCodeChange = (newCode) => {
+        setPumlCode(newCode);
+        updatePumlCodeById(projectId, newCode);
+    };
 
     return (
-        <div className="w-full h-screen flex flex-col p-4 bg-gray-100">
-            <div className="flex items-center justify-between mb-2">
-                <h1 className="text-2xl font-bold">PlantUML Editor</h1>
+        <div className="w-full h-screen flex flex-col p-2 bg-gray-100">
+            <div className="flex items-center justify-between mb-1">
+                <div className="flex items-center gap-2 ps-4">
+                    <button onClick={onClose}>
+                        <Undo2 size={20} />
+                    </button>
+                    <h1 className="text-xl font-bold">PlantUML Editor</h1>
+                </div>
                 {error && <div className="text-red-500">{error}</div>}
             </div>
 
-            <div className="flex flex-1 gap-4">
-                <LeftCard pumlCode={pumlCode} setPumlCode={setPumlCode}/>
-                <RightCard previewUrl={previewUrl} isLoading={isLoading} />
-            </div>
+            <ResizablePanelGroup direction="horizontal" className="rounded-xl overflow-hidden shadow-inner">
+                <ResizablePanel defaultSize={20}>
+                    <LeftCard pumlCode={pumlCode} setPumlCode={handlePumlCodeChange} />
+                </ResizablePanel>
+                <ResizableHandle />
+                <ResizablePanel>
+                    <RightCard previewUrl={previewUrl} isLoading={isLoading} />
+                </ResizablePanel>
+            </ResizablePanelGroup>
         </div>
     );
 };

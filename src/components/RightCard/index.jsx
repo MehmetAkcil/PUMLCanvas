@@ -14,7 +14,8 @@ const RightCard = ({previewUrl}) => {
 
     return (
 
-        <Card className="w-3/4 p-4">
+        <div className="bg-white p-4 h-full">
+
             <div className="flex flex-col h-full">
                 <Buttons
                     setZoom={setZoom}
@@ -33,7 +34,7 @@ const RightCard = ({previewUrl}) => {
                     setZoom={setZoom}
                 />
             </div>
-        </Card>
+        </div>
     )
 }
 

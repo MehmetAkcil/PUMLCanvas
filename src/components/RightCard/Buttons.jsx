@@ -1,5 +1,5 @@
 import {RotateCcw, ZoomIn, ZoomOut} from "lucide-react";
-import {usePumlStore} from "../../stores/usePumCode.js";
+import {usePumlStore} from "../../stores/usePumlCode.js";
 import {Button} from "@/components/ui/button";
 import {FileDown} from "lucide-react";
 
@@ -36,7 +36,7 @@ const Buttons = ({setZoom, setPosition, MIN_ZOOM, MAX_ZOOM, zoom}) => {
     };
 
     return (
-        <div className="flex items-center mb-1">
+        <div className="flex items-center">
             <button
                 onClick={handleZoomOut}
                 className="p-2 rounded hover:bg-gray-100"
