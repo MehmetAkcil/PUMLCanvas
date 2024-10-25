@@ -53,11 +53,11 @@ const ProjectManager = () => {
     };
 
     return (
-        <div className="p-4">
+        <>
             {isEditing ? (
                 <PlantUMLEditor projectId={editingProjectId} onClose={handleCancelEdit} />
             ) : (
-                <>
+                <div className="p-4">
                     <h2 className="text-xl mb-4">Project Manager</h2>
                     <div className="flex gap-2 mb-4">
                         <Input
@@ -78,9 +78,9 @@ const ProjectManager = () => {
                             </div>
                         ))}
                     </div>
-                </>
+                </div>
             )}
-        </div>
+        </>
     );
 };
 
