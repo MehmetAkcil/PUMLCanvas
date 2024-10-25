@@ -11,8 +11,17 @@ const PlantUMLEditor = ({ projectId, onClose }) => {
     const [previewUrl, setPreviewUrl] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
+    const [project, setProject] = useState(null);
 
-    const { pumlCode, setPumlCode, updatePumlCodeById, getPumlCodeById } = usePumlStore();
+    const { pumlCode, setPumlCode, updatePumlCodeById, getPumlCodeById, getById } = usePumlStore();
+
+    useEffect(() => {
+        (async () => {
+            const project = await getById(projectId);
+            setProject(project);
+        })();
+    }, [projectId]);
+
 
     const encodePlantUML = (text) => {
         try {
@@ -82,7 +91,10 @@ const PlantUMLEditor = ({ projectId, onClose }) => {
                     <button onClick={onClose}>
                         <Undo2 size={20} />
                     </button>
-                    <h1 className="text-xl font-bold">PlantUML Editor</h1>
+                    <h1 className="text-xl font-bold capitalize">
+                        {project ? `${project?.name}` : 'New Project'} -
+                        PlantUML Editor
+                    </h1>
                 </div>
                 {error && <div className="text-red-500">{error}</div>}
             </div>

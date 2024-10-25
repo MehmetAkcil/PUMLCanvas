@@ -1,46 +1,36 @@
 'use client';
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+import {create} from 'zustand';
+import db from '../lib/db';
 
-const getStoredPumlCode = () => {
-    if (typeof window !== 'undefined') {
-        const storedCode = localStorage.getItem('pumlCode');
-        return storedCode ? storedCode : `@startuml\n    Bob -> Alice : hello\n@enduml`;
-    }
-    return `@startuml\n    Bob -> Alice : hello\n@enduml`;
+const getStoredPumlCode = async (id) => {
+    const project = await db.projects.get(id);
+    return project && project.content ? project.content : `@startuml\n    Bob -> Alice : hello\n@enduml`;
+};
+
+const getProject = async (id) => {
+    return await db.projects.get(id)
 };
 
 export const usePumlStore = create(
-    persist(
-        (set) => ({
-            pumlCode: getStoredPumlCode(),
-            setPumlCode: (newCode) => {
-                set(() => {
-                    if (typeof window !== 'undefined') {
-                        localStorage.setItem('pumlCode', newCode);
-                    }
-                    return { pumlCode: newCode };
-                });
-            },
-            updatePumlCodeById: (id, newCode) => {
-                set(() => {
-                    if (typeof window !== 'undefined') {
-                        localStorage.setItem(`pumlCode_${id}`, newCode);
-                    }
-                    return { pumlCode: newCode };
-                });
-            },
-            getPumlCodeById: (id) => {
-                if (typeof window !== 'undefined') {
-                    const storedCode = localStorage.getItem(`pumlCode_${id}`);
-                    return storedCode ? storedCode : `@startuml\n    Bob -> Alice : hello\n@enduml`;
-                }
-                return `@startuml\n    Bob -> Alice : hello\n@enduml`;
-            },
-        }),
-        {
-            name: 'puml-storage',
-            getStorage: () => localStorage,
-        }
-    )
+    set => ({
+        pumlCode: '',
+        setPumlCode: async (id, newCode) => {
+            await db.projects.update(id, {content: newCode});
+            set(() => ({pumlCode: newCode}));
+        },
+        updatePumlCodeById: async (id, newCode) => {
+            await db.projects.update(id, {content: newCode});
+            set(() => ({pumlCode: newCode}));
+        },
+        getPumlCodeById: async (id) => {
+            const code = await getStoredPumlCode(id);
+            set(() => ({pumlCode: code}));
+            return code;
+        },
+        getById: async (id) => {
+            const code = await getProject(id);
+            set(() => code);
+            return code;
+        },
+    })
 );
