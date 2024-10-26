@@ -1,94 +1,94 @@
 ![Image](https://i.hizliresim.com/pkqytax.png)
 # PlantUML Editor
 
-Bu proje, **React** ve **Monaco Editor** paketleri kullanılarak geliştirilmiş bir PlantUML düzenleyicisidir. Kullanıcılar PlantUML kodlarını yazabilir, önizlemesini görebilir ve düzenleme sırasında yakınlaştırma, uzaklaştırma ve sürükleme, düzenleme işlemleri bitince indirme özelliğini kullanabilirler. Mobil cihazında kullanmak üzere PWA özelliği ile indirilebilir.
+This Project is a PlantUML editor developed by using **React** and **Monaco Editor** packages. Users can write PlantUML codes and preview them. During the editing they can zoom in ,zoom out and drag. Once the editing is complete, they can use the downloading feature. It can be downloaded with PWA feauture to be used on mobil devices.
 
 ## Demo Site
 [PlantUML Editor Demo-MehmetAkcil](https://puml-canvas.mehmetakcil.com.tr)
 
-## Özellikler
+## Features
 
-- **Kod Düzenleme**: Monaco Editor ile entegre edilmiş PlantUML kod editörü.
-- **PlantUML Önizlemesi**: PlantUML kodunun SVG formatında canlı olarak önizlemesi.
-- **Yakınlaştırma / Uzaklaştırma**: Fare tekerleği veya butonlar aracılığıyla önizleme üzerinde yakınlaştırma ve uzaklaştırma yapabilme.
-- **Sürükle ve Bırak**: Önizleme alanını sürükleyerek konumunu ayarlayabilme.
-- **İndirme**: Düzenleme işlemi bittikten sonra dosya olarak indirebilme.
-- **PWA Desteği**: Mobil cihazında kullanmak istediğinde uygulama olarak indirip kullanabilme.
-- **Hata Yönetimi**: Kodun işlenmesi veya önizlemenin yüklenmesi sırasında oluşabilecek hatalar için kullanıcıya bilgi verme.
+- **Code Editing**: PlantUML code editor integrated with Monaco Editor
+- **PlantUML Preview**: Live preview of PlantUML code in SVG format.
+- **Zoom in / Zoom out**: Zoom in and out on the preview using the mouse wheel or buttons.
+- **Drag and Drop**: Adjusting the position of the preview area by dragging.
+- **Download**: Downloadable as a file after the editing is complete.
+- **PWA Support**: Downloadable as an app when wanted to be used on mobil devices.
+- **Error Management**: Providing feedback to the users about errors that could occur during code processing or preview loading. 
 
-## Kullanılan Teknolojiler
+## Technologies Used
 
-- **React**: Kullanıcı arayüzünü oluşturmak için kullanılan JavaScript kütüphanesi.
-- **Monaco Editor**: Visual Studio Code'da kullanılan güçlü bir kod editörü.
-- **PlantUML Encoder**: PlantUML kodunu şifrelemek ve uzaktan önizleme URL'si oluşturmak için kullanılan yardımcı kütüphane.
-- **Tailwind CSS**: Arayüzün stilini düzenlemek için kullanılan CSS framework'ü.
+- **React**: JavaScript Library that is used to create the user interface.
+- **Monaco Editor**: A powerful code editor used in Visual Studio Code.
+- **PlantUML Encoder**: A utility library used to encrypt PlanUML code and to create remote preview URL.
+- **Tailwind CSS**: CSS Framework used to style the interface.
 
-## Kurulum
+## Installation
 
-Bu projeyi yerel makinenizde çalıştırmak için aşağıdaki adımları izleyin:
+To run this project on your local device, follow the steps below:
 
-1. Depoyu klonlayın:
+1. Clone the repository: 
     ```bash
     git clone https://github.com/username/plantuml-editor.git
     ```
-2. Proje dizinine gidin:
+2. Navigate to the project directory:
     ```bash
     cd plantuml-editor
     ```
-3. Gerekli paketleri yükleyin:
+3. Install the required packages:
     ```bash
     npm install
     ```
-4. Uygulamayı başlatın:
+4. Start the application
     ```bash
     npm run dev
     ```
 
-## Kullanım
+## How to use
 
-- Kod editörüne PlantUML kodunuzu yazın veya yapıştırın.
-- Kod yazarken otomatik olarak önizleme alanında SVG görüntüsü oluşacaktır.
-- **Zoom In** ve **Zoom Out** butonlarını kullanarak görüntüyü yakınlaştırıp uzaklaştırabilirsiniz.
-- Görüntüyü sürükleyerek istediğiniz konuma taşıyabilirsiniz.
-- Kodunuz tamamlandığında **Download** butonundan indirebilirsiniz.
-- Mobil cihazınıza indirip kullanmak istediğinde uygulama olarak kullanabilirsiniz
+- Write or paste your PlantUML code into the code editor.
+- As the code is written, an SVG image will automatically generate in the preview area.
+- You can zoom in and zoom out by using **Zoom In** and **Zoom Out** buttons.
+- You can adjust the location of the image by dragging it.
+- When your code is complete, you can download it using the **Download** button.
+- You can download it, when you want to use it as an app on your mobile device.
 
-## Bilinen Problemler
+## Identified Problems
 
-- Kod çok karmaşık veya büyük olduğunda önizleme gecikmesi yaşanabilir.
-- Hatalı kod girişlerinde SVG önizlemesi yüklenmeyebilir.
+- In cases where the code is complicated or too big, preview delays could ocur.
+- In case of invalid code inputs, SVG preview may not load.
 
-## Geliştirme
+## Developing
 
-Eğer projeyi geliştirmek veya katkıda bulunmak isterseniz:
+If you want to develop or contribute to this project:
 
-1. Fork yapın.
-2. Yeni bir branch oluşturun:
+1. Fork the project.
+2. Create a branch:
     ```bash
     git checkout -b feature/ozellik-adi
     ```
-3. Değişikliklerinizi yapın ve commit edin:
+3. Apply your changes and commit:
     ```bash
-    git commit -m "Yeni bir özellik eklendi"
+    git commit -m "New feature has been added"
     ```
-4. Branch'i gönderin:
+4. Send the branch:
     ```bash
     git push origin feature/ozellik-adi
     ```
-5. Bir pull request açın.
+5. Open a pull request.
 
 
-## Katkıda Bulunma
+## Contribute 
 
-Eğer bu projeye katkıda bulunmak isterseniz, aşağıdaki adımları takip edebilirsiniz:
+If you want to contribute to this Project, you can follow the steps below:
 
--   Bu depoyu fork edin.
--   Yeni özellikler eklemek veya hata düzeltmeleri yapmak için bir dal (branch) oluşturun.
--   Yaptığınız değişiklikleri bu dalda yapın.
--   Değişikliklerinizi commit edin ve bir pull request oluşturun.
+-   Fork the repository.
+-   Create a branch to add new features or to fix bugs
+-   Do your changes in this branch
+-   Commit your changes and open a pull request
 
 
 
-## Lisans
+## License
 
-Bu proje MIT lisansı ile lisanslanmıştır. Daha fazla bilgi için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
+ This Project has been licensed with MIT. For further information, check [LICENSE](LICENSE) file. 
